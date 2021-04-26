@@ -9,4 +9,10 @@
     <string name="showChart"> Show chart </string>
     <string name="numberPage1"> Page #  %d</string>
     <string name="yearStr1"> %d year </string>
+
+    <string name="new_message_notification_title_template">New message: %1$s</string>
+
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
 </resources>
