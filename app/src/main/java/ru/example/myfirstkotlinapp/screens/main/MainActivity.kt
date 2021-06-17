@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.omegar.mvp.presenter.InjectPresenter
@@ -24,7 +25,6 @@ class MainActivity : BaseActivity(), View.OnClickListener, MainView {
     private val yearStart = cStart.get(Calendar.YEAR)
     private val monthStart = cStart.get(Calendar.MONTH)
     private val dayStart = cStart.get(Calendar.DAY_OF_MONTH)
-
 
     private val cEnd = Calendar.getInstance()
     private val yearEnd = cEnd.get(Calendar.YEAR)
@@ -156,7 +156,7 @@ class MainActivity : BaseActivity(), View.OnClickListener, MainView {
 
         val startDate = button_calendar_start.text.toString().isEmpty()
         val endDate = button_calendar_end.text.toString().isEmpty()
-
+        Log.i("endDate", button_calendar_end.text.toString())
 
         if (startDate && endDate) {
             adapterM = RecyclerAdapterMain(list, ::personItemClicked)

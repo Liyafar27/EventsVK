@@ -33,11 +33,13 @@ class RecyclerAdapterMain(
         val urlImage = Uri.parse(item.photo_200)
         val position1 = position + 1
         val name = item.name
+        val endDateString = sdf.format(Date(item.finish_date.toLong() * 1000))
 
         if (item.finish_date !== 0L) {
             finishDate = " по "+ sdf.format(Date(item.finish_date * 1000))
         } else {
             finishDate = ""
+
         }
         val textName = "$position1.  $name"
         val textDate = "c " + sdf.format(Date(item.start_date * 1000)) +  finishDate
