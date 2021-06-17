@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="15dp"
     android:background="@android:color/background_light"
-    android:elevation="15dp">
+    android:elevation="5dp">
 
-   <TextView
+    <TextView
         android:id="@+id/textName"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_row="0"
         android:layout_column="1"
-        android:padding="5dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textSize="12sp"
+        android:gravity="center"
+        android:maxLines="3"
+        android:paddingTop="7dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
-    <ImageView
+    <com.omega_r.libs.views.OmegaCircleImageView
         android:id="@+id/imageView2"
-        android:layout_width="75dp"
-        android:layout_height="65dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_row="0"
         android:layout_column="0"
+        android:layout_rowSpan = "2"
         android:contentDescription="@android:string/ok" />
 
     <TextView
-        android:id="@+id/dateText"
-        android:layout_width="wrap_content"
+        android:id="@+id/dateTextRepo"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:visibility="invisible" />
-
+        android:layout_row="1"
+        android:layout_column="1"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:maxLines="3"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:paddingTop="7dp"
+        />
 
 </GridLayout>

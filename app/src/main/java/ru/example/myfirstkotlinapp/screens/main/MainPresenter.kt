@@ -1,55 +1,85 @@
 package ru.example.myfirstkotlinapp.screens.main
 
+import android.content.Intent
+import android.os.Handler
 import com.omegar.mvp.InjectViewState
+import com.vk.api.sdk.VK
+import com.vk.api.sdk.auth.VKAccessToken
+import com.vk.api.sdk.auth.VKAuthCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ru.example.myfirstkotlinapp.data.storage.Storage
 import ru.example.myfirstkotlinapp.screens.base.BasePresenter
 
-private const val PER_PAGE: Int = 100
 
 @InjectViewState
 class MainPresenter : BasePresenter<MainView>() {
     val storage = Storage.instance
 
-
-  private   var page: Int = 1
+    var startDates: String = ""
         set(value) {
             field = value
-            viewState.setPageNumber(field)
+            viewState.setDateStart(field)
             updateRepo()
         }
-
-      private    var repoName: String = ""
+    var endDates: String = ""
         set(value) {
             field = value
-            viewState.setRepoName(repoName)
+            viewState.setDateEnd(field)
             updateRepo()
         }
 
     init {
-        viewState.setPageNumber(page)
-        viewState.setRepoName(repoName)
+        viewState.setDateStart(startDates)
+        viewState.setDateEnd(endDates)
+
     }
 
-    fun requestShowRepo(repoName: String) {
-        this.repoName = repoName
+    fun requestStartDate(startDate: String) {
+        this.startDates = startDate
     }
 
+    fun requestEndDate(endDate: String) {
+        this.endDates = endDate
+    }
 
-
-    private fun updateRepo() {
+    fun updateRepo() {
         GlobalScope.launch(Dispatchers.Main) {
-
-            viewState.setList(storage.getStorageRepo(repoName, page, PER_PAGE))
-//            viewState.setLimit(storage.getLimitRemaining())
-
+            viewState.setList(storage.getRequestEvent().response!!.items)
         }
-
     }
 
-    fun requestChangePage(diff: Int) {
-        page += diff
+
+    fun login(isSuccess: Boolean) {
+        viewState.startLoading()
+        Handler().postDelayed({
+
+            viewState.endLoading()
+            if (isSuccess) {
+                viewState.openFriends()
+            } else {
+                viewState.showError("Упс...Ошибочка вышла")
+            }
+        }, 500)
+    }
+
+    fun loginVk(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
+        if (!VK.onActivityResult(
+                requestCode = requestCode,
+                resultCode = resultCode,
+                data = data,
+                callback = object : VKAuthCallback {
+                    override fun onLogin(token: VKAccessToken) {
+                        login(true)
+                    }
+                    override fun onLoginFailed(errorCode: Int) {
+                        viewState.showError("Упс...Ошибочка вышла")
+                    }
+                })
+        ) {
+            return false
+        }
+        return true
     }
 }

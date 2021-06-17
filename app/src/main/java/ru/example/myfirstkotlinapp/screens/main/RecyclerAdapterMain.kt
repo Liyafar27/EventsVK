@@ -10,15 +10,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.example.myfirstkotlinapp.R
-import ru.example.myfirstkotlinapp.model.GitHubRepo
+import ru.example.myfirstkotlinapp.data.remote.RemoteItemEvent
+import java.text.SimpleDateFormat
 import java.util.*
 
 
 class RecyclerAdapterMain(
-    private var values: List<GitHubRepo>,
-    private val clickListener: (GitHubRepo) -> Unit
+    private var values: List<RemoteItemEvent>,
+    private val clickListener: (RemoteItemEvent) -> Unit
 ) : RecyclerView.Adapter<RecyclerAdapterMain.MyViewHolder>() {
-
+    var finishDate: String = ""
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_list_repo, parent, false)
@@ -27,21 +28,28 @@ class RecyclerAdapterMain(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
         val item = values[position]
-        val urlAvatar = Uri.parse(item.owner.avatar_url)
+        val urlImage = Uri.parse(item.photo_200)
         val position1 = position + 1
-        val owner = item.owner.login
+        val name = item.name
 
-        val message =
-            position1.toString() + ".  " + "Repository Name: " + "\n" + item.name + "\n" + "Owner: " + owner + "\n" + "Created at: " + "\n" + item.created_at + "\n" + "⭐ Stargazers count: " + item.stargazers_count
+        if (item.finish_date !== 0L) {
+            finishDate = " по "+ sdf.format(Date(item.finish_date * 1000))
+        } else {
+            finishDate = ""
+        }
+        val textName = "$position1.  $name"
+        val textDate = "c " + sdf.format(Date(item.start_date * 1000)) +  finishDate
 
-        holder.textName.text = message
-        holder.dateText.text = item.created_at.toString()
+
+        holder.textName.setText(textName)
+        holder.dateText.setText(textDate)
         holder.bindValue(values[position], clickListener)
 
         Glide.with(holder.itemView.context)
-            .load(urlAvatar)
-            .into(holder.imageView2)
+            .load(urlImage)
+            .into(holder.image)
 
         setFadeAnimation(holder.itemView)
     }
@@ -51,10 +59,10 @@ class RecyclerAdapterMain(
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val textName: TextView = itemView.findViewById(R.id.textName)
-        val dateText: TextView = itemView.findViewById(R.id.dateText)
-        val imageView2: ImageView = itemView.findViewById(R.id.imageView2)
+        val dateText: TextView = itemView.findViewById(R.id.dateTextRepo)
+        val image: ImageView = itemView.findViewById(R.id.imageView2)
 
-        fun bindValue(itemModel: GitHubRepo, listener: (GitHubRepo) -> Unit) {
+        fun bindValue(itemModel: RemoteItemEvent, listener: (RemoteItemEvent) -> Unit) {
 
             itemView.setOnClickListener { listener(itemModel) }
         }
@@ -66,13 +74,8 @@ class RecyclerAdapterMain(
         anim.duration = 300
         view.startAnimation(anim)
     }
-//    fun setData(localGitHubRepo: List<LocalGitHubRepo>){
-//        values = localGitHubRepo
-//
-//        notifyDataSetChanged()
-//    }
 
-    }
+}
 
 
 

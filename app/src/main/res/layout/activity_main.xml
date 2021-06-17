@@ -21,120 +21,46 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="220dp"
-                android:layout_height="40dp"
-                android:paddingStart="10dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="10dp"
-                android:text="@string/textFind"
+            <Button
+                android:id="@+id/button_calendar_start"
+                android:layout_width="110dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_baseline_calendar_today_24"
+                android:gravity="center"
+                android:text="@string/date_start"
                 android:textAlignment="center"
-                app:layout_constraintBottom_toTopOf="@+id/editText"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.39"
+                app:layout_constraintHorizontal_bias="0.192"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/buttonSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/textBtnFind"
+                android:id="@+id/button_calendar_end"
+                android:layout_width="110dp"
+                android:layout_height="70dp"
+                android:background="@drawable/ic_baseline_calendar_today_24"
+                android:gravity="center"
+                android:text="@string/date_end"
+                android:textAlignment="gravity"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                app:backgroundTintMode="multiply"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button_calendar_start"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.59" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="154dp"
-                android:layout_height="38dp"
-                android:autofillHints="@android:string/ok"
-                android:ems="10"
-                android:hint="@string/repoName"
-                android:inputType="textPersonName"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.568" />
-
-            <Button
-                android:id="@+id/next"
-                android:layout_width="24dp"
-                android:layout_height="25dp"
-                android:background="@android:drawable/ic_media_play"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/editText"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/prev"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.809" />
-
-            <Button
-                android:id="@+id/prev"
-                android:layout_width="24dp"
-                android:layout_height="25dp"
-                android:background="?attr/actionModeCloseDrawable"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/editText"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.809" />
-
-            <TextView
-                android:id="@+id/pageNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/numberPage1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
-                app:layout_constraintHorizontal_bias="0.101"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText"
                 app:layout_constraintVertical_bias="1.0" />
 
-            <TextView
-                android:id="@+id/api"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/pageNumber"
-                app:layout_constraintEnd_toStartOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/api2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/next"
-                app:layout_constraintEnd_toStartOf="@+id/editText"
-                app:layout_constraintStart_toEndOf="@+id/api"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-            <TextView
-                android:id="@+id/api3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/buttonSearch"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="307dp"
-            android:layout_height="431dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             app:layoutManager="LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

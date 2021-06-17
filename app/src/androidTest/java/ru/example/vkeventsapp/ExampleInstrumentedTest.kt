@@ -1,4 +1,4 @@
-package ru.example.myfirstkotlinapp
+package ru.example.vkeventsapp
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

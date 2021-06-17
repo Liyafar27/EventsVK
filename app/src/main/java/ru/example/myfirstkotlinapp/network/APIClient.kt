@@ -17,7 +17,7 @@ object APIClient {
 
     val retrofit = Retrofit.Builder()
         .client(getHttpClient().build())
-        .baseUrl("https://api.github.com/")
+        .baseUrl("https://api.vk.com/")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
         .build()
 

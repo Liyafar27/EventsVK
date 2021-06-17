@@ -1,4 +1,4 @@
-package ru.example.myfirstkotlinapp
+package ru.example.vkeventsapp
 
 import org.junit.Test
 

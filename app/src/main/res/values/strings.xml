@@ -1,18 +1,9 @@
 <resources>
-    <string name="app_name">MyFirstKotlinApp</string>
-    <string name="textFind">Search for GitHub Repositories </string>
-    <string name="repoName"> Repository name </string>
-    <string name="textBtnFind">Search</string>
-    <string name="star"> ⭐ Stargazers List ⭐  for </string>
-    <string name="star1"> ⭐ Stargazers List ⭐  for %1$s %2$s</string>
-    <string name="starChart"> ⭐ Stargazers Chart ⭐ </string>
-    <string name="showChart"> Show chart </string>
-    <string name="numberPage1"> Page #  %d</string>
-    <string name="yearStr1"> %d year </string>
-
-    <string name="new_message_notification_title_template">New message: %1$s</string>
-
-
+    <string name="app_name">VKEvent</string>
+    <string name="error">New message: %1$s</string>
     <string name="action_share">Share</string>
-    <string name="action_reply">Reply</string>
+    <string name="action_info">Event Info</string>
+    <string name="date_start">Start Date</string>
+    <string name="date_end">End Date</string>
+    <integer name="com_vk_sdk_AppId">7872604</integer>
 </resources>
