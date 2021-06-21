@@ -1,6 +1,9 @@
 # VKEvent
 apk https://drive.google.com/file/d/1qjWzkXe-m86jOG0waQfYpzz1Ey5Y1RH8/view?usp=sharing
+<p align="center">
 video      https://drive.google.com/file/d/1Uxbn7Wo7xQOXQSVjDs4JtOooIqiLNIKh/view
+    
+</p>
 
 
 <p align="center">
